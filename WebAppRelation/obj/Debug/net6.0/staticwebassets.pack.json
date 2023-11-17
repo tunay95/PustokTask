@@ -1,0 +1,25 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\II novbe\\Desktop\\WebAppRelation\\WebAppRelation\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\WebAppRelation.bundle.scp.css",
+      "PackagePath": "staticwebassets\\WebAppRelation.bundle.scp.css"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.WebAppRelation.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.build.WebAppRelation.props",
+      "PackagePath": "build\\WebAppRelation.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildMultiTargeting.WebAppRelation.props",
+      "PackagePath": "buildMultiTargeting\\WebAppRelation.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildTransitive.WebAppRelation.props",
+      "PackagePath": "buildTransitive\\WebAppRelation.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

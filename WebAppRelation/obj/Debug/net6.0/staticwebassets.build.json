@@ -1,0 +1,54 @@
+{
+  "Version": 1,
+  "Hash": "93d2w8El03BSRFBbybINEGROzv7ggh2WSXX77Tb1DNY=",
+  "Source": "WebAppRelation",
+  "BasePath": "_content/WebAppRelation",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "WebAppRelation\\wwwroot",
+      "Source": "WebAppRelation",
+      "ContentRoot": "C:\\Users\\II novbe\\Desktop\\WebAppRelation\\WebAppRelation\\wwwroot\\",
+      "BasePath": "_content/WebAppRelation",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Users\\II novbe\\Desktop\\WebAppRelation\\WebAppRelation\\obj\\Debug\\net6.0\\scopedcss\\bundle\\WebAppRelation.styles.css",
+      "SourceId": "WebAppRelation",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\II novbe\\Desktop\\WebAppRelation\\WebAppRelation\\obj\\Debug\\net6.0\\scopedcss\\bundle\\",
+      "BasePath": "_content/WebAppRelation",
+      "RelativePath": "WebAppRelation.styles.css",
+      "AssetKind": "All",
+      "AssetMode": "CurrentProject",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "ScopedCss",
+      "AssetTraitValue": "ApplicationBundle",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\Users\\II novbe\\Desktop\\WebAppRelation\\WebAppRelation\\obj\\Debug\\net6.0\\scopedcss\\bundle\\WebAppRelation.styles.css"
+    },
+    {
+      "Identity": "C:\\Users\\II novbe\\Desktop\\WebAppRelation\\WebAppRelation\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\WebAppRelation.bundle.scp.css",
+      "SourceId": "WebAppRelation",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\II novbe\\Desktop\\WebAppRelation\\WebAppRelation\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\",
+      "BasePath": "_content/WebAppRelation",
+      "RelativePath": "WebAppRelation.bundle.scp.css",
+      "AssetKind": "All",
+      "AssetMode": "Reference",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "ScopedCss",
+      "AssetTraitValue": "ProjectBundle",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\Users\\II novbe\\Desktop\\WebAppRelation\\WebAppRelation\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\WebAppRelation.bundle.scp.css"
+    }
+  ]
+}
