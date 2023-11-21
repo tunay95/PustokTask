@@ -16,12 +16,17 @@ namespace WebAppRelation
 
             var app = builder.Build();
 
-            app.UseStaticFiles();
+
+            app.MapControllerRoute(
+                name: "Admin",
+                pattern: "{area:exists}/{controller=Admin}/{action=Index}/{Id?}"
+                );
 
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Home}/{id?}");
 
+            app.UseStaticFiles();
             app.Run();
         }
     }
