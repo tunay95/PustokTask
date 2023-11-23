@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using WebAppRelation.Areas.AdminPanel.ViewModels;
 
 namespace WebAppRelation.Areas.AdminPanel.Controllers
@@ -6,20 +8,61 @@ namespace WebAppRelation.Areas.AdminPanel.Controllers
     [Area("AdminPanel")]
     public class BookController : Controller
     {
-        AppDbContext _db;
-        public BookController(AppDbContext db)
+        AppDbContext _context;
+        public BookController(AppDbContext context)
         {
-            _db = db;
+            _context = context;
         }
-
         public IActionResult Table()
         {
-            AdminVM admin = new AdminVM();
-            admin.Books = _db.Books
-                .Include(x => x.Category)
-                .Include(x => x.Brand)
-                .ToList();
-            return View(admin);
+            AdminVM adminVM = new AdminVM();
+            adminVM.books = _context.Books.Include(b => b.Category).Include(b => b.Brand).ToList();
+            return View(adminVM);
+        }
+        public IActionResult Create()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Create(Book book)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+            book.Availability = false;
+            _context.Books.Add(book);
+            _context.SaveChanges();
+            return RedirectToAction("Table");
+        }
+        public IActionResult Delete(int id)
+        {
+            Book book = _context.Books.Find(id);
+            _context.Books.Remove(book);
+            _context.SaveChanges();
+            return RedirectToAction("Table");
+        }
+        public IActionResult Update(int id)
+        {
+            Book book = _context.Books.Find(id);
+            return View(book);
+        }
+        [HttpPost]
+        public IActionResult Update(Book newBook)
+        {
+            Book oldBook = _context.Books.Find(newBook.Id);
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+            oldBook.Title = newBook.Title;
+            oldBook.Description = newBook.Description;
+            oldBook.Author = newBook.Author;
+            oldBook.Price = newBook.Price;
+            oldBook.BookCode = newBook.BookCode;
+
+            _context.SaveChanges();
+            return RedirectToAction("Table");
         }
     }
 }

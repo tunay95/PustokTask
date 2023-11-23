@@ -2,6 +2,8 @@
 {
     public class AdminVM
     {
-        public List<Book> Books { get; set; }
+        public List<Book> books;
+        public List<Brand> brands;
+        public List<Category> categories;
     }
 }
