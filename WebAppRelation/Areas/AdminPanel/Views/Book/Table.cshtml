@@ -1,0 +1,95 @@
+﻿@using WebAppRelation.Areas.AdminPanel.ViewModels;
+@model AdminVM
+
+<div class="content-wrapper">
+    <div class="row">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Table with contextual classes</h4>
+                <p class="card-description">
+                    Add class <code>.table-{color}</code>
+                </p>
+                <div class="table-responsive pt-3">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>
+                                    No:
+                                </th>
+                                <th>
+                                    Title
+                                </th>
+                                <th>
+                                    Description
+                                </th>
+                                <th>
+                                    Author
+                                </th>
+                                <th>
+                                    Book Code
+                                </th>
+                                <th>
+                                    Price
+                                </th>
+                                <th>
+                                    Availability
+                                </th>
+                                <th>
+                                    CreatedDate
+                                </th>
+                                <th>
+                                    CategoryId
+                                </th>
+                                <th>
+                                    BrandId
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{
+                                var count = 0;
+                            }
+
+                            @foreach (var item in Model.Books)
+                            {
+                                count++;
+                                <tr class="table-info">
+                                    <td>
+                                        @count
+                                    </td>
+                                    <td>
+                                        @item.Title
+                                    </td>
+                                    <td>
+                                        @item.Description
+                                    </td>
+                                    <td>
+                                        @item.Author
+                                    </td>
+                                    <td>
+                                        @item.BookCode
+                                    </td>
+                                    <td>
+                                        @item.Price
+                                    </td>
+                                    <td>
+                                        @item.Availability
+                                    </td>
+                                    <td>
+                                        @item.CreatedDate
+                                    </td>
+                                    <td>
+                                        @item.Category.Id
+                                    </td>
+                                    <td>
+                                        @item.Brand.Id
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

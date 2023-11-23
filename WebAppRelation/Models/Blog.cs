@@ -7,6 +7,6 @@
         public string Description { get; set; }
         public string ImgUrl { get; set; }
         public DateTime CreatedDate { get; set; }
-        public List<BlogsTags> BlogsTags { get; set; }
+        public List<Tag> Tag { get; set; }
     }
 }
