@@ -13,7 +13,7 @@ namespace WebAppRelation.Areas.AdminPanel.Controllers
         {
             _context = context;
         }
-        public IActionResult Table()
+        public async Task<IActionResult> TableAsync()
         {
             AdminVM adminVM = new AdminVM();
             adminVM.books = _context.Books.Include(b => b.Category).Include(b => b.Brand).ToList();

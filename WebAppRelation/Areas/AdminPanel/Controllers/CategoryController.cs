@@ -52,5 +52,27 @@ namespace WebAppRelation.Areas.AdminPanel.Controllers
             return RedirectToAction("Index");
         }
 
+        public IActionResult Update(int id)
+        {
+            Category category = _context.Categories.Find(id);
+            return View(category);
+        }
+
+        [HttpPost]
+        public IActionResult Update(Category newCategory)
+        {
+            Category oldCategory = _context.Categories.Find(newCategory.Id);
+
+            if(!ModelState.IsValid)
+            {
+                return View();
+            }
+            oldCategory.Name = newCategory.Name;
+            oldCategory.ParentCategoryId = newCategory.ParentCategoryId;
+
+            _context.SaveChanges();
+
+            return RedirectToAction("Table");
+        }
     }
 }
