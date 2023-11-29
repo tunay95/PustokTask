@@ -21,19 +21,44 @@ namespace WebAppRelation.Areas.AdminPanel.Controllers
         }
         public IActionResult Create()
         {
+            ViewBag.Categories = _context.Categories.ToList();
+            ViewBag.Tags = _context.Tags.ToList();
+
             return View();
         }
         [HttpPost]
-        public IActionResult Create(Book book)
+        public IActionResult Create(CreateProductVM createProductVM)
         {
+            ViewBag.Categories = _context.Categories.ToList();
+            ViewBag.Tags = _context.Tags.ToList();
+
             if (!ModelState.IsValid)
             {
                 return View();
             }
-            book.Availability = false;
+            bool resultCategory=_context.Categories.Any(c => c.Id == createProductVM.CategoryId);
+            if (!resultCategory)
+            {
+                ModelState.AddModelError("CategoryId", "Fidan eledi hamisini");
+                return View();
+            }
+
+            Book book = new Book()
+            {
+                Title = createProductVM.Title,
+                Description = createProductVM.Description,
+                Price = createProductVM.Price,
+                Author = createProductVM.Author,
+                BookCode = createProductVM.BookCode,
+                CategoryId = createProductVM.CategoryId  
+                 
+
+            };
+
+
             _context.Books.Add(book);
             _context.SaveChanges();
-            return RedirectToAction("Table");
+            return RedirectToAction("Tabled");
         }
         public IActionResult Delete(int id)
         {

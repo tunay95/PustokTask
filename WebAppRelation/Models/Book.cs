@@ -17,5 +17,6 @@ namespace WebAppRelation.Models
         public Category? Category { get; set; }
         public List<BookImages>? BookImages { get; set; }
         public List<Tag>? Tag { get; set; }
+        public int? CategoryId { get; set; }
     }
 }

@@ -12,8 +12,8 @@ using WebAppRelation.DAL;
 namespace WebAppRelation.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20231124082438_Tables")]
-    partial class Tables
+    [Migration("20231129142346_CreateTables")]
+    partial class CreateTables
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

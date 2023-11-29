@@ -1,7 +1,11 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\WebAppRelation",
+    "\\WebAppRelation\\Areas",
+    "\\WebAppRelation\\Areas\\AdminPanel",
+    "\\WebAppRelation\\Areas\\AdminPanel\\Controllers"
   ],
-  "SelectedNode": "\\WebAppRelation.sln",
+  "SelectedNode": "\\WebAppRelation\\Areas\\AdminPanel\\Controllers\\BookController.cs",
   "PreviewInSolutionExplorer": false
 }

@@ -19,6 +19,7 @@ namespace WebAppRelation.Areas.AdminPanel.Controllers
         }
         public IActionResult Create()
         {
+
             ICollection<Category> categories = _context.Categories.ToList();
             CreateCategoryVM categoryVM = new CreateCategoryVM()
             {
@@ -29,6 +30,7 @@ namespace WebAppRelation.Areas.AdminPanel.Controllers
         [HttpPost]
         public IActionResult Create(CreateCategoryVM categoryVM)
         {
+
             Category category = new Category();
             if (!ModelState.IsValid)
             {
@@ -54,6 +56,8 @@ namespace WebAppRelation.Areas.AdminPanel.Controllers
 
         public IActionResult Update(int id)
         {
+
+
             Category category = _context.Categories.Find(id);
             return View(category);
         }
@@ -61,6 +65,8 @@ namespace WebAppRelation.Areas.AdminPanel.Controllers
         [HttpPost]
         public IActionResult Update(Category newCategory)
         {
+
+
             Category oldCategory = _context.Categories.Find(newCategory.Id);
 
             if(!ModelState.IsValid)
@@ -72,7 +78,7 @@ namespace WebAppRelation.Areas.AdminPanel.Controllers
 
             _context.SaveChanges();
 
-            return RedirectToAction("Table");
+            return RedirectToAction("Index");
         }
     }
 }
