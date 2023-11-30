@@ -20,6 +20,7 @@ namespace WebAppRelation.Areas.AdminPanel.Controllers
         public IActionResult Create()
         {
 
+
             ICollection<Category> categories = _context.Categories.ToList();
             CreateCategoryVM categoryVM = new CreateCategoryVM()
             {
@@ -56,7 +57,7 @@ namespace WebAppRelation.Areas.AdminPanel.Controllers
 
         public IActionResult Update(int id)
         {
-
+            ViewBag.Categories =  _context.Categories.ToList();
 
             Category category = _context.Categories.Find(id);
             return View(category);
@@ -65,7 +66,7 @@ namespace WebAppRelation.Areas.AdminPanel.Controllers
         [HttpPost]
         public IActionResult Update(Category newCategory)
         {
-
+            ViewBag.Categories =  _context.Categories.ToList();
 
             Category oldCategory = _context.Categories.Find(newCategory.Id);
 

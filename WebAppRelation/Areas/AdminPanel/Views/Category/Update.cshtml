@@ -1,4 +1,5 @@
-﻿<!-- partial -->
+﻿@using WebAppRelation.Areas.AdminPanel.ViewModels
+<!-- partial -->
 @model Category
 <div class="main-panel">
     <div class="content-wrapper">
@@ -14,8 +15,13 @@
                                 <span asp-validation-for="Name" style="color:red"></span>
                             </div>
                             <div class="form-group">
-                                <label asp-for="ParentCategoryId">ParentCategoryId</label>
-                                <input type="text" class="form-control" asp-for="ParentCategoryId" placeholder="ParentCategoryId">
+                                <label asp-for="ParentCategoryId" class="form-label">Categories</label>
+                                <select class="form-select" asp-for="ParentCategoryId">
+                                @foreach (var item in ViewBag.Categories)
+                            {
+                                    <option value="@item.Id">@item.Name</option>
+                            }
+                                </select>
                             </div>
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </form>

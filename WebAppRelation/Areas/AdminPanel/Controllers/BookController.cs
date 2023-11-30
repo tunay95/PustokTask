@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using WebAppRelation.Areas.AdminPanel.ViewModels;
+using WebAppRelation.Models;
 
 namespace WebAppRelation.Areas.AdminPanel.Controllers
 {
@@ -58,35 +60,84 @@ namespace WebAppRelation.Areas.AdminPanel.Controllers
 
             _context.Books.Add(book);
             _context.SaveChanges();
-            return RedirectToAction("Tabled");
+            return RedirectToAction("Table");
         }
         public IActionResult Delete(int id)
         {
-            Book book = _context.Books.Find(id);
+            var book = _context.Books.FirstOrDefault(c => c.Id == id);
+            if(book is null)
+            {
+
+                return View("Error");
+            }
+            
             _context.Books.Remove(book);
             _context.SaveChanges();
-            return RedirectToAction("Table");
+            return RedirectToAction(nameof(Table));
         }
-        public IActionResult Update(int id)
+        public async Task<IActionResult> Update(int id)
         {
-            Book book = _context.Books.Find(id);
-            return View(book);
+
+            Book book = await _context.Books.Where(c => c.Id == id).FirstOrDefaultAsync();
+            if (book is null)
+            {
+
+                return View("Error");
+            }
+            ViewBag.Categories = await _context.Categories.ToListAsync();
+            ViewBag.Tags = await _context.Tags.ToListAsync();
+
+            UpdateProductVM updateProductVM = new UpdateProductVM()
+            {
+                Id = id,
+                Title = book.Title,
+                Description = book.Description,
+                Price = book.Price,
+                Author = book.Author,
+                BookCode = book.BookCode,
+                CategoryId = book.CategoryId
+
+
+            };
+
+            return View(updateProductVM);
         }
         [HttpPost]
-        public IActionResult Update(Book newBook)
+        public async Task<IActionResult> Update(UpdateProductVM updateProductVM)
         {
-            Book oldBook = _context.Books.Find(newBook.Id);
+            ViewBag.Categories = await _context.Categories.ToListAsync();
+            ViewBag.Tags = await _context.Tags.ToListAsync();
+
             if (!ModelState.IsValid)
             {
                 return View();
             }
-            oldBook.Title = newBook.Title;
-            oldBook.Description = newBook.Description;
-            oldBook.Author = newBook.Author;
-            oldBook.Price = newBook.Price;
-            oldBook.BookCode = newBook.BookCode;
 
-            _context.SaveChanges();
+            Book oldBook = await _context.Books.Where(b=>b.Id==updateProductVM.Id).FirstOrDefaultAsync();
+
+            if (oldBook == null)
+            {
+
+                return View("Error");
+            }
+
+            bool resultCategory=await _context.Categories.AnyAsync(b=>b.Id == updateProductVM.CategoryId);
+
+            if (!resultCategory)
+            {
+
+                ModelState.AddModelError("CategoryId", "No such category exists");
+                return View();
+            }
+
+            oldBook.Title = updateProductVM.Title;
+            oldBook.Description = updateProductVM.Description;
+            oldBook.Author = updateProductVM.Author;
+            oldBook.Price = updateProductVM.Price;
+            oldBook.BookCode = updateProductVM.BookCode;
+            oldBook.CategoryId = updateProductVM.CategoryId;
+
+            await _context.SaveChangesAsync();
             return RedirectToAction("Table");
         }
     }

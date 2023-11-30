@@ -29,6 +29,9 @@
                                 <th>
                                     Price
                                 </th>
+                                <th>
+                                    Category
+                                </th>
                             </tr>
                         </thead>
                         <tbody>
@@ -55,12 +58,16 @@
                                     <td>
                                         @item.BookCode
                                     </td>
+                                    
                                     <td>
                                         @item.Price
                                     </td>
                                     <td>
-                                        <a class="btn btn-danger" asp-controller="Book" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                                        @item.Category.Name
+                                    </td>
+                                    <td>
                                         <a class="btn btn-secondary" asp-controller="Book" asp-action="Update" asp-route-id="@item.Id">Update</a>
+                                        <a class="btn btn-danger" asp-controller="Book" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
                                     </td>
                                 </tr>
                             }
