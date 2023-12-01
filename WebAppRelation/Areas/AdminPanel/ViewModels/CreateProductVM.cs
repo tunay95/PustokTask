@@ -1,4 +1,6 @@
-﻿namespace WebAppRelation.Areas.AdminPanel.ViewModels
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace WebAppRelation.Areas.AdminPanel.ViewModels
 {
     public class CreateProductVM
     {
@@ -8,6 +10,12 @@
         public string BookCode { get; set; }
         public double Price { get; set; }
         public int? CategoryId { get; set; }
-        
+        public List<int>? TagIds { get; set; }
+        [Required]
+        public IFormFile MainPhoto { get; set; }
+        [Required]
+        public IFormFile HoverPhoto { get; set; }
+        public List<IFormFile> Photos { get; set; }
+
     }
 }

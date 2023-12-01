@@ -38,9 +38,25 @@
                                 <span asp-validation-for="CategoryId" style="color:red"></span>
                                 </select>
                             </div>
+                            <br>
                             <div>
-
+                                <label asp-for="MainPhoto" class="form-label">MainPhoto</label>
+                                <input asp-for="MainPhoto" class="form-control" asp-for="MainPhoto">
+                                <span asp-validation-for="MainPhoto" style="color:red"></span>
+                            </div> 
+                            <br>
+                            <div>
+                                <label asp-for="HoverPhoto" class="form-label">HoverPhoto</label>
+                                <input asp-for="HoverPhoto" class="form-control" asp-for="HoverPhoto">
+                                <span asp-validation-for="HoverPhoto" style="color:red"></span>
                             </div>
+                            <br>
+                            <div>
+                                <label asp-for="Photos" class="form-label">AdditionalPhotos</label>
+                                <input asp-for="Photos" class="form-control" asp-for="Photos">
+                                <span asp-validation-for="Photos" style="color:red"></span>
+                            </div>
+                            <br>
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </form>
                     </div>

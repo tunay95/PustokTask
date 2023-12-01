@@ -49,7 +49,13 @@ namespace WebAppRelation.Areas.AdminPanel.Controllers
         }
         public IActionResult Delete(int id)
         {
-            Category category = _context.Categories.Find(id);
+            Category category = _context.Categories.Include(c=>c.Books).FirstOrDefault(c=>c.Id==id);
+
+            foreach (Book book in category.Books)
+            {
+                _context.Remove(book);
+            }
+
             _context.Categories.Remove(category);
             _context.SaveChanges();
             return RedirectToAction("Index");

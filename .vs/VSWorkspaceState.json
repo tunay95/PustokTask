@@ -4,8 +4,11 @@
     "\\WebAppRelation",
     "\\WebAppRelation\\Areas",
     "\\WebAppRelation\\Areas\\AdminPanel",
-    "\\WebAppRelation\\Areas\\AdminPanel\\Controllers"
+    "\\WebAppRelation\\Areas\\AdminPanel\\Controllers",
+    "\\WebAppRelation\\bin",
+    "\\WebAppRelation\\Controllers",
+    "\\WebAppRelation\\DAL"
   ],
-  "SelectedNode": "\\WebAppRelation\\Areas\\AdminPanel\\Controllers\\BookController.cs",
+  "SelectedNode": "\\WebAppRelation\\bin",
   "PreviewInSolutionExplorer": false
 }

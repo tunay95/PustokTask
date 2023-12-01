@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using WebAppRelation.Areas.AdminPanel.ViewModels;
+using WebAppRelation.Helpers;
 using WebAppRelation.Models;
 
 namespace WebAppRelation.Areas.AdminPanel.Controllers
@@ -57,6 +58,36 @@ namespace WebAppRelation.Areas.AdminPanel.Controllers
 
             };
 
+            if (createProductVM.MainPhoto.CheckType("image/"))
+            {
+                ModelState.AddModelError("MainPhoto", "Duzgun formatda sekil daxil et");
+                return View();  
+            }
+
+            if (!createProductVM.MainPhoto.CheckLength(3000))
+            {
+                ModelState.AddModelError("MainPhoto", "max photo size - 3mb");
+                return View();
+            }
+
+
+            if (createProductVM.HoverPhoto.CheckType("image/"))
+            {
+                ModelState.AddModelError("MainPhoto", "Duzgun formatda sekil daxil et");
+                return View();
+            }
+
+            if (!createProductVM.HoverPhoto.CheckLength(3000))
+            {
+                ModelState.AddModelError("MainPhoto", "max photo size - 3mb");
+                return View();
+            }
+
+            BookImages mainImages = new BookImages()
+            {
+                IsPrime = true,
+                ImgUrl=createProductVM.MainPhoto.Upload() 
+            }
 
             _context.Books.Add(book);
             _context.SaveChanges();
