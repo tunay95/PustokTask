@@ -7,8 +7,12 @@
     "\\WebAppRelation\\Areas\\AdminPanel\\Controllers",
     "\\WebAppRelation\\bin",
     "\\WebAppRelation\\Controllers",
-    "\\WebAppRelation\\DAL"
+    "\\WebAppRelation\\DAL",
+    "\\WebAppRelation\\Helpers",
+    "\\WebAppRelation\\Views",
+    "\\WebAppRelation\\Views\\Blog",
+    "\\WebAppRelation\\Views\\Home"
   ],
-  "SelectedNode": "\\WebAppRelation\\bin",
+  "SelectedNode": "\\WebAppRelation\\bin\\Release",
   "PreviewInSolutionExplorer": false
 }
