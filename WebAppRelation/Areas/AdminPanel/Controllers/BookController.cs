@@ -12,9 +12,12 @@ namespace WebAppRelation.Areas.AdminPanel.Controllers
     public class BookController : Controller
     {
         AppDbContext _context;
-        public BookController(AppDbContext context)
+        IWebHostEnvironment _env; 
+        public BookController(AppDbContext context, IWebHostEnvironment env)
         {
             _context = context;
+            _env = env;
+
         }
         public async Task<IActionResult> TableAsync()
         {
@@ -86,8 +89,19 @@ namespace WebAppRelation.Areas.AdminPanel.Controllers
             BookImages mainImages = new BookImages()
             {
                 IsPrime = true,
-                ImgUrl=createProductVM.MainPhoto.Upload() 
-            }
+                ImgUrl = createProductVM.MainPhoto.Upload(_env.WebRootPath, @"\Upload\Product"),
+                Book = book
+            };
+
+            BookImages hoverImages = new BookImages()
+            {
+                IsPrime = false,
+                ImgUrl = createProductVM.MainPhoto.Upload(_env.WebRootPath, @"\Upload\Product"),
+                Book = book
+            };
+
+            book.BookImages.Add(mainImages);
+            book.BookImages.Add(hoverImages);
 
             _context.Books.Add(book);
             _context.SaveChanges();

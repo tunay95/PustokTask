@@ -11,6 +11,7 @@ public class HomeController : Controller
     }
     public IActionResult Home()
     {
+
         HomeVM homeVM = new HomeVM();
         homeVM.categories = _context.Categories.ToList();
         homeVM.blogs = _context.Blogs.ToList();
@@ -19,5 +20,6 @@ public class HomeController : Controller
             .ToList();
 
         return View(homeVM);
+        //Response.Cookies.Append("Name", "FIDAN");
     }
 }
