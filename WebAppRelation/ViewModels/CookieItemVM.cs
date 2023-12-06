@@ -1,6 +1,6 @@
 ﻿namespace WebAppRelation.ViewModel
 {
-    public class BasketCookieItemVM
+    public class CookieItemVM
     {
         public int Id { get; set; }
         public int Count { get; set; }
