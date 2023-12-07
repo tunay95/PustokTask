@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Identity;
 using WebAppRelation.DAL;
 
 namespace WebAppRelation
@@ -9,11 +10,20 @@ namespace WebAppRelation
             var builder = WebApplication.CreateBuilder(args);
 
             builder.Services.AddControllersWithViews();
-            builder.Services.AddSession(opt =>
-            {
-                opt.IdleTimeout = TimeSpan.FromMinutes(20);
-                });
+            //builder.Services.AddSession(opt =>
+            //{
+            //    opt.IdleTimeout = TimeSpan.FromMinutes(20);
+            //    });
 
+            builder.Services.AddIdentity<AppUser, IdentityRole>(opt =>
+            {
+                opt.Password.RequiredLength = 10;
+                opt.Password.RequireNonAlphanumeric = true;
+                opt.User.AllowedUserNameCharacters= "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
+                opt.Lockout.MaxFailedAccessAttempts = 5;
+                opt.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
+            
+            }).AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
 
             builder.Services.AddDbContext<AppDbContext>(option =>
             {
@@ -37,7 +47,7 @@ namespace WebAppRelation
 
             app.UseStaticFiles();
             app.Run();
-                app.UseSession();
+           
         }
     }
 }
