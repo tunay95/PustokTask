@@ -31,7 +31,8 @@ namespace WebAppRelation.Controllers
             {
                 UserName = registerVM.Username,
                 Email = registerVM.Email,
-                Fullname = registerVM.FullName
+                Name = registerVM.Name,
+                Surname = registerVM.Surname
             };
             var result = await _userManager.CreateAsync(user, registerVM.Password);
             if(!result.Succeeded) 
@@ -50,10 +51,42 @@ namespace WebAppRelation.Controllers
         {
             return View();
         }
-
-        public IActionResult Logout()
+        [HttpPost]
+        public async  Task<IActionResult> Login(LoginVM loginVM,string? returnUrl)
         {
-            return View();
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+
+            var user = await _userManager.FindByEmailAsync(loginVM.Email);
+            if(user == null)
+            {
+                ModelState.AddModelError("", "Not Found");
+                return View();
+            }
+
+            var result =  _signInManager.CheckPasswordSignInAsync(user,loginVM.Password,true).Result;
+            if (!result.Succeeded)
+            {
+                ModelState.AddModelError("", "Not Found");
+                return View();
+            }
+
+            if (result.IsLockedOut)
+            {
+                ModelState.AddModelError("", "Wait Please");
+                return View();
+            }
+
+            await _signInManager.SignInAsync(user, false);
+            return RedirectToAction("Home","Home");
+        }
+
+        public async Task<IActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Home","Home");
         }
 
   

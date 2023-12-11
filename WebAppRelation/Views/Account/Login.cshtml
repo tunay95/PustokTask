@@ -1,0 +1,36 @@
+﻿@using WebAppRelation.ViewModels.Account
+@model LoginVM
+
+<main class="page-section inner-page-sec-padding-bottom">
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-sm-12 col-md-12 col-xs-12 col-lg-6 mb--30 mb-lg--0">
+					<form method="post">
+					<div class="login-form">
+						<h4 class="login-title">Returning Customer</h4>
+						<p><span class="font-weight-bold">I am a returning customer</span></p>
+						<div class="row">
+							<div class="col-md-12 col-12 mb--15">
+								<label asp-for="Email">Enter your email address here...</label>
+								<input class="mb-0 form-control" asp-for="Email" type="email" id="email1"
+									   placeholder="Enter you email address here...">
+									   <span asp-validation-for="Email" style="color:red"></span>
+							</div>
+							<div class="col-md-12 col-12 mb--15">
+								<label asp-for="Password">Enter your password</label>
+								<input class="mb-0 form-control" asp-for="Password" type="password" id="login-password"
+									   placeholder="Enter your password">
+								<span asp-validation-for="Password" style="color:red"></span>
+							</div>
+							<div class="col-md-12">
+								<div asp-validation-summary="All"></div>
+								<button type="submit" asp-controller="Account" asp-action="Login" class="btn btn-outlined">Login</button>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>	
+		</div>
+	</div>
+</main>
+	
