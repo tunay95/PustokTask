@@ -62,7 +62,7 @@ namespace WebAppRelation.Controllers
             var user = await _userManager.FindByEmailAsync(loginVM.Email);
             if(user == null)
             {
-                ModelState.AddModelError("", "Not Found");
+                ModelState.AddModelError("", "The Account Is Not Found");
                 return View();
             }
 

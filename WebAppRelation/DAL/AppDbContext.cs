@@ -16,4 +16,6 @@ public class AppDbContext:IdentityDbContext<AppUser>
     public DbSet<Brand> Brands { get; set; }
     public DbSet<Tag> Tags { get; set; }
     public DbSet<Category> Categories { get; set; }
+    public DbSet<BasketItem> BasketItems { get; set; }
+    public DbSet<BasketItem>Orders { get; set; }
 }
